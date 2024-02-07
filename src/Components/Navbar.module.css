@@ -1,0 +1,34 @@
+.navbar {
+    height: 74px;
+    background-color: #0C70F2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    /* background-color: white; */
+    margin: 0;
+}
+
+.navbar li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 30px;
+    padding: 0px 30px;
+    height: 54px;
+    cursor: pointer;
+}
+
+.navbar ul li:nth-child(2) {
+    color: #0C70F2;
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
+}

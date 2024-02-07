@@ -1,0 +1,43 @@
+.tarefas {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.tarefas table {
+    margin: auto;
+    margin-bottom: 50px;
+    width: 50%;
+}
+
+.tarefas table, th, td {
+    /* border: 1px solid white; */
+    border-collapse: collapse;
+}
+
+.tarefas table th, td {
+    text-align: left;
+    padding: 10px;
+}
+
+.tarefas table th {
+    font-size: 20px;
+}
+
+.tarefas table td {
+    font-size: 16px;
+}
+
+.tarefas .tdNovaTarefa {
+    font-style: italic;
+}
+
+.tarefas .tdStatus {
+    text-align: center;
+}
+
+.tarefas .tdOpcoes div {
+    display: flex;
+    justify-content: space-around;
+    vertical-align: center;
+}

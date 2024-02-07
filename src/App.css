@@ -28,6 +28,17 @@
   color: #61dafb;
 }
 
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid whitesmoke;
+  color: whitesmoke;
+  height: 40px;
+  text-align: center;
+  font-size: 14px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
