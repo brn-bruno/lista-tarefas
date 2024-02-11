@@ -17,7 +17,7 @@
 
 .tarefas table th, td {
     text-align: left;
-    padding: 10px;
+    padding: 7px;
 }
 
 .tarefas table th {
@@ -40,4 +40,15 @@
     display: flex;
     justify-content: space-around;
     vertical-align: center;
+}
+
+.tarefas .CRUDButtons {
+    padding: 5px;
+}
+
+.tarefas .CRUDButtons:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #2D2D2D;
+    border-radius: 5px;
 }

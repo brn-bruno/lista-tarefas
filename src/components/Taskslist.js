@@ -109,8 +109,8 @@ function Tasklist() {
                                 </td>
                                 <td key={item.id} className={styles.tdOpcoes}>
                                     <div>
-                                        <FaPencilAlt onClick={() => {renderModal('edit', item.id)}} key={item.id}/>
-                                        <FaRegTrashAlt onClick={() => {renderModal('delete', item.id)}} key={item.id}/>
+                                        <FaPencilAlt className={styles.CRUDButtons} onClick={() => {renderModal('edit', item.id)}} key={item.id}/>
+                                        <FaRegTrashAlt className={styles.CRUDButtons} onClick={() => {renderModal('delete', item.id)}} key={item.id}/>
                                     </div>
                                 </td>
                             </tr>
@@ -125,7 +125,7 @@ function Tasklist() {
                         </td>
                         <td className={styles.tdOpcoes}>
                             <div>
-                                <FaPlus onClick={() => {renderModal('add')}}/>
+                                <FaPlus className={styles.CRUDButtons} onClick={() => {renderModal('add')}}/>
                             </div>
                         </td>
                     </tr>
