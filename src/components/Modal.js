@@ -4,8 +4,20 @@ import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
 import Button from './Button';
 
-function Modal({type, title, name, description, completed, isOpen, onClose}) {
+function Modal({type, title, name, changeName, description, changeDescription, completed, changeCompleted, isOpen, onClose}) {
     let showHideModal = isOpen;
+
+    // const [nameTask, setNameTask] = useState(name);
+
+    // function fnNameTask(param) {
+    //     setNameTask(param);
+    //     console.log('------------'+'nameTask '+nameTask+' name '+name);
+    //     return param;
+    // }
+
+    // console.log('------------'+'nameTask '+nameTask+' name '+name);
+    // const [descriptionTask, setDescriptionTask] = useState(description);
+    // const [statusTask, setStatusTask] = useState(completed);
     
     if (!showHideModal) { 
         return null 
@@ -53,13 +65,13 @@ function Modal({type, title, name, description, completed, isOpen, onClose}) {
 
                 <div className={styles.modalBody}>
                     <p> 
-                        Nome da tarefa: <br/> <input type='text' value={name}></input>
+                        Nome da tarefa: <br/> <input type='text' value={name} onChange={(e) => changeName(e.target.value)}></input>
                     </p>
                     <p>
-                        Descrição da tarefa: <br/> <textarea value={description} cols='30' rows='5'></textarea>
+                        Descrição da tarefa: <br/> <textarea value={description} onChange={(e) => changeDescription(e.target.value)} cols='30' rows='5'></textarea>
                     </p>
                     <p>
-                        Status: <br/> <input id="checkStatus" value="" type="checkbox" checked={completed} /> <label for="checkStatus">Concluído?</label>
+                        Status: <br/> <input id="checkStatus" type="checkbox" checked={completed} onChange={(e) => changeCompleted(e.target.checked)} /> <label for="checkStatus">Concluído?</label>
                     </p>
                 </div>
 

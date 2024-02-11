@@ -19,7 +19,7 @@ function Tasklist() {
         { "id": 10, "title": "Shopping", "description": "Fazer algumas compras no shopping", "completed": true }
     ]
 
-    function status(param, id) {
+    function status(param) {
         if (param) {
             return <FaRegCheckSquare color='#F9D1D1'/>
         } else {
@@ -104,13 +104,13 @@ function Tasklist() {
                                 <td>
                                     {item.title}
                                 </td>
-                                <td key={item.id} className={styles.tdStatus}>
+                                <td className={styles.tdStatus}>
                                     {status(item.completed, item.id)}
                                 </td>
-                                <td key={item.id} className={styles.tdOpcoes}>
+                                <td className={styles.tdOpcoes}>
                                     <div>
-                                        <FaPencilAlt className={styles.CRUDButtons} onClick={() => {renderModal('edit', item.id)}} key={item.id}/>
-                                        <FaRegTrashAlt className={styles.CRUDButtons} onClick={() => {renderModal('delete', item.id)}} key={item.id}/>
+                                        <FaPencilAlt className={styles.CRUDButtons} onClick={() => {renderModal('edit', item.id)}} />
+                                        <FaRegTrashAlt className={styles.CRUDButtons} onClick={() => {renderModal('delete', item.id)}} />
                                     </div>
                                 </td>
                             </tr>
@@ -132,7 +132,17 @@ function Tasklist() {
                 </tbody>
             </table>
 
-            <Modal type={typeCRUD} title={titleModal} name={nameTask} description={descriptionTask} completed={completedTask} isOpen={modalIsOpen} onClose={setIsOpen}></Modal>
+            <Modal 
+                type={typeCRUD} 
+                title={titleModal} 
+                name={nameTask} 
+                changeName={setNameTask} 
+                description={descriptionTask} 
+                changeDescription={setDescriptionTask} 
+                completed={completedTask} 
+                changeCompleted={setCompletedTask} 
+                isOpen={modalIsOpen} 
+                onClose={setIsOpen} />
 
         </div>
     )
