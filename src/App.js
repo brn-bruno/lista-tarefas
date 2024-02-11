@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/Navbar';
-import Tasklist from './components/Taskslist';
-import Title from './components/Title';
-import Modal from './components/Modal';
+import Navbar from './Components/Navbar';
+import Tasklist from './Components/Taskslist';
+import Title from './Components/Title';
+import Modal from './Components/Modal';
 
 function App() {
   return (
