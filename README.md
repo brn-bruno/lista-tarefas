@@ -1,10 +1,30 @@
-Link para esse projeto no Vercel: [https://lista-tarefas-nine-phi.vercel.app](https://lista-tarefas-nine-phi.vercel.app)
+## Organizador de Tarefas 📋
+Projeto criado usando `ReactJS`, utilizar `npm install` para instalar o React no projeto.<br/>
+As linguagens utilizadas foram: HTML, CSS, JavaScript/JSX.<br/>
+Link para esse projeto no Vercel: <a href="https://lista-tarefas-nine-phi.vercel.app" target="_blank">https://lista-tarefas-nine-phi.vercel.app</a><br/>
 
-# Getting Started with Create React App
+### Como funciona?
+A ideia dessa página é armazenar uma lista de tarefas, por padrão já são carregadas 10 tarefas diferentes. Cada tarefa tem nome, descrição e um status (concluído ou não).<br/>
+As opções básicas são: Criar uma nova tarefa ou Editar/Excluir as existentes por meio dos botões da coluna **Opções**. Qualquer alteração na tarefa deve ser feito através das opções, a coluna **Status** apenas mostra se a tarefa está concluída ou não.
+
+#### Changelog
+0. Versão 1
+   1. Criação do projeto inicial de acordo com o Figma;
+0. Versão 1.1
+   1. Utilização de DefaultValue para permitir edição do input;
+   2. Melhoria no feedback visual ao selecionar os ícones do CRUD e botões da Modal;
+0. Versão 1.2
+   1. Criada as functions para renderizar a lista de tarefas quando ocorre alterações no array;
+   2. Melhoria no feedback visual ao selecionar o ícone de exclusão;
+
+
+---
+Documentação oficial React abaixo:
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
@@ -41,7 +61,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
