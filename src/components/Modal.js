@@ -4,21 +4,25 @@ import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
 import Button from './Button';
 
-function Modal({type, title, name, changeName, description, changeDescription, completed, changeCompleted, isOpen, onClose}) {
+function Modal({type, idTask, title, name, changeName, description, changeDescription, completed, changeCompleted, refreshTaskList, isOpen, onClose}) {
     let showHideModal = isOpen;
 
     function fnSetData() {
-        let nameTask = document.getElementById('nameTask').value;
-        let descriptionTask = document.getElementById('descriptionTask').value;
+        let nameTask = document.getElementById('nameTask').value.trim();
+        let descriptionTask = document.getElementById('descriptionTask').value.trim();
         let completedTask = document.getElementById('completedTask').checked;
 
-        if (true) {
+        if ((type == 'add' || type == 'edit') && (nameTask == '' || descriptionTask == '')) {
+            window.alert('O nome e a descrição da tarefa são obrigatórios!');
+        
+        } else {
             changeName(nameTask);
             changeDescription(descriptionTask);
             changeCompleted(completedTask);
+            refreshTaskList(type, idTask, {"id": idTask, "title": nameTask, "description": descriptionTask, "completed": completedTask});
             onClose(false);
-            console.log('------------'+'nameTask: '+nameTask+' descriptionTask: '+descriptionTask+' completedTask: '+completedTask);
-        }
+            
+        };
     }
     
     if (!showHideModal) { 
@@ -41,10 +45,10 @@ function Modal({type, title, name, changeName, description, changeDescription, c
 
                 <div className={styles.modalBody}>
                     <p> 
-                        Nome da tarefa: <br/> <input type='text' value={name} disabled></input>
+                        Nome da tarefa: <br/> <input id='nameTask' type='text' value={name} disabled></input>
                     </p>
                     <p>
-                        Descrição da tarefa:  <br/> <textarea value={description} cols='30' rows='5' disabled></textarea>
+                        Descrição da tarefa:  <br/> <textarea id='descriptionTask' value={description} cols='30' rows='5' disabled></textarea>
                     </p>
                     <p>
                         Status:  <br/> <input id="completedTask" value="1" type="checkbox" checked={completed} disabled/> <label for="completedTask">Concluído?</label>
@@ -54,7 +58,7 @@ function Modal({type, title, name, changeName, description, changeDescription, c
 
                 <div className={styles.modalFooter}>
                     <span onClick={() => onClose(false)}><Button text='Não'></Button></span>
-                    <span><Button text='Sim'></Button></span>
+                    <span onClick={() => fnSetData()}><Button text='Sim'></Button></span>
                 </div>
             </div>
             ) 
@@ -67,7 +71,7 @@ function Modal({type, title, name, changeName, description, changeDescription, c
 
                 <div className={styles.modalBody}>
                     <p> 
-                        Nome da tarefa: <br/> <input id='nameTask' type='text' defaultValue={name} ></input>
+                        Nome da tarefa: <br/> <input id='nameTask' type='text' defaultValue={name}></input>
                     </p>
                     <p>
                         Descrição da tarefa: <br/> <textarea id='descriptionTask' defaultValue={description} cols='30' rows='5'></textarea>

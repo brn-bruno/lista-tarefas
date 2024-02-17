@@ -27,6 +27,8 @@ function Tasklist() {
         }
     }
 
+    
+
     const [modalIsOpen, setIsOpen] = useState(false);
     function fnOpenModal() {
         setIsOpen(true);
@@ -40,6 +42,11 @@ function Tasklist() {
     const [titleModal, setTitleModal] = useState('');
     function fnTitleModal(param) {
         setTitleModal(param);
+    }
+
+    const [idTask, setIdTask] = useState(0);
+    function fnIdTask(param) {
+        setIdTask(param);
     }
 
     const [nameTask, setNameTask] = useState('');
@@ -68,17 +75,27 @@ function Tasklist() {
     
             }
 
-            for (let i = 0; i < db.length; i++) {
-                if (db[i].id == id) {
+            for (let i = 0; i < taskList.length; i++) {
+                if (taskList[i].id == id) {
                     // console.log('O indice do array e '+ i);
-                    fnNameTask(db[i].title);
-                    fnDescriptionTask(db[i].description);
-                    fnCompletedTask(db[i].completed);
+                    fnIdTask(taskList[i].id);
+                    fnNameTask(taskList[i].title);
+                    fnDescriptionTask(taskList[i].description);
+                    fnCompletedTask(taskList[i].completed);
                 }
             }
         
         } else {
+            let maxId = 0;
+
+            taskList.forEach(ob => {
+                if (ob.id > maxId) {
+                    maxId = ob.id;
+                }
+            });
+
             fnTitleModal('Criar tarefa');
+            fnIdTask(maxId + 1);
             fnNameTask('');
             fnDescriptionTask('');
             fnCompletedTask();
@@ -87,6 +104,31 @@ function Tasklist() {
 
         fnTypeCRUD(type);
         fnOpenModal();
+    }
+
+    const [taskList, setTaskList] = useState(db);
+    function fnTaskList(typeCRUD, id, taskObject) {
+        if (typeCRUD == 'add') {
+            setTaskList([...taskList, taskObject]);
+
+        } else if (typeCRUD == 'edit') {
+            let newArrayEdit = [...taskList];
+            let taskIndex = newArrayEdit.findIndex((ob) => {
+                return ob.id == id;
+            });
+
+            newArrayEdit[taskIndex].title = taskObject.title;
+            newArrayEdit[taskIndex].description = taskObject.description;
+            newArrayEdit[taskIndex].completed = taskObject.completed;
+
+            setTaskList(newArrayEdit);
+
+        } else if (typeCRUD == 'delete') {
+            let tempArray  = [...taskList];
+            let newArrayDelete = tempArray.filter(ob => ob.id !== id);
+            setTaskList(newArrayDelete);
+        
+        }
     }
 
     return (
@@ -100,7 +142,7 @@ function Tasklist() {
                 </thead>
                 <tbody>
                     {
-                        db.map((item) =>
+                        taskList.map((item) =>
                             <tr>
                                 <td>
                                     {item.title}
@@ -136,12 +178,14 @@ function Tasklist() {
             <Modal 
                 type={typeCRUD} 
                 title={titleModal} 
+                idTask={idTask}
                 name={nameTask} 
                 changeName={setNameTask} 
                 description={descriptionTask} 
                 changeDescription={setDescriptionTask} 
                 completed={completedTask} 
-                changeCompleted={setCompletedTask} 
+                changeCompleted={setCompletedTask}
+                refreshTaskList={fnTaskList}
                 isOpen={modalIsOpen} 
                 onClose={setIsOpen} />
 
