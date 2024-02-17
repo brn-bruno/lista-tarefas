@@ -7,17 +7,19 @@ import Button from './Button';
 function Modal({type, title, name, changeName, description, changeDescription, completed, changeCompleted, isOpen, onClose}) {
     let showHideModal = isOpen;
 
-    // const [nameTask, setNameTask] = useState(name);
+    function fnSetData() {
+        let nameTask = document.getElementById('nameTask').value;
+        let descriptionTask = document.getElementById('descriptionTask').value;
+        let completedTask = document.getElementById('completedTask').checked;
 
-    // function fnNameTask(param) {
-    //     setNameTask(param);
-    //     console.log('------------'+'nameTask '+nameTask+' name '+name);
-    //     return param;
-    // }
-
-    // console.log('------------'+'nameTask '+nameTask+' name '+name);
-    // const [descriptionTask, setDescriptionTask] = useState(description);
-    // const [statusTask, setStatusTask] = useState(completed);
+        if (true) {
+            changeName(nameTask);
+            changeDescription(descriptionTask);
+            changeCompleted(completedTask);
+            onClose(false);
+            console.log('------------'+'nameTask: '+nameTask+' descriptionTask: '+descriptionTask+' completedTask: '+completedTask);
+        }
+    }
     
     if (!showHideModal) { 
         return null 
@@ -45,7 +47,7 @@ function Modal({type, title, name, changeName, description, changeDescription, c
                         Descrição da tarefa:  <br/> <textarea value={description} cols='30' rows='5' disabled></textarea>
                     </p>
                     <p>
-                        Status:  <br/> <input id="checkStatus" value="1" type="checkbox" checked={completed} disabled/> <label for="checkStatus">Concluído?</label>
+                        Status:  <br/> <input id="completedTask" value="1" type="checkbox" checked={completed} disabled/> <label for="completedTask">Concluído?</label>
                     </p>
                     <p ></p>
                 </div>
@@ -65,19 +67,19 @@ function Modal({type, title, name, changeName, description, changeDescription, c
 
                 <div className={styles.modalBody}>
                     <p> 
-                        Nome da tarefa: <br/> <input type='text' value={name} onChange={(e) => changeName(e.target.value)}></input>
+                        Nome da tarefa: <br/> <input id='nameTask' type='text' defaultValue={name} ></input>
                     </p>
                     <p>
-                        Descrição da tarefa: <br/> <textarea value={description} onChange={(e) => changeDescription(e.target.value)} cols='30' rows='5'></textarea>
+                        Descrição da tarefa: <br/> <textarea id='descriptionTask' defaultValue={description} cols='30' rows='5'></textarea>
                     </p>
                     <p>
-                        Status: <br/> <input id="checkStatus" type="checkbox" checked={completed} onChange={(e) => changeCompleted(e.target.checked)} /> <label for="checkStatus">Concluído?</label>
+                        Status: <br/> <input id="completedTask" type="checkbox" defaultChecked={completed} /> <label for="completedTask">Concluído?</label>
                     </p>
                 </div>
 
                 <div className={styles.modalFooter}>
                     <span onClick={() => onClose(false)}><Button text='Não'></Button></span>
-                    <span><Button text='Sim'></Button></span>
+                    <span onClick={() => fnSetData()}><Button text='Sim'></Button></span>
                 </div>
             </div>
             ) }

@@ -50,6 +50,7 @@ function Tasklist() {
     const [descriptionTask, setDescriptionTask] = useState('');
     function fnDescriptionTask(param) {
         setDescriptionTask(param);
+        // console.log('descriptionTask: '+descriptionTask);
     }
 
     const [completedTask, setCompletedTask] = useState(false);
