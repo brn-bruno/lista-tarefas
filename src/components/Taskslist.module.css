@@ -52,3 +52,7 @@
     color: #2D2D2D;
     border-radius: 5px;
 }
+
+.tarefas .CRUDButtons:nth-child(2):hover {
+    color: #ca0000;
+}
