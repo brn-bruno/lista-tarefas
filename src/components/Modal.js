@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
 import Button from './Button';
 
-function Modal({type, idTask, title, name, changeName, description, changeDescription, completed, changeCompleted, refreshTaskList, isOpen, onClose}) {
+function Modal({type, idTask, title, name, changeName, description, changeDescription, completed, changeCompleted, refreshTaskList, isOpen, onClose, notify}) {
     let showHideModal = isOpen;
 
     function fnSetData() {
@@ -13,7 +13,8 @@ function Modal({type, idTask, title, name, changeName, description, changeDescri
         let completedTask = document.getElementById('completedTask').checked;
 
         if ((type == 'add' || type == 'edit') && (nameTask == '' || descriptionTask == '')) {
-            window.alert('O nome e a descrição da tarefa são obrigatórios!');
+            // window.alert('O nome e a descrição da tarefa são obrigatórios!');
+            notify('O nome e a descrição da tarefa são obrigatórios!');
         
         } else {
             changeName(nameTask);
