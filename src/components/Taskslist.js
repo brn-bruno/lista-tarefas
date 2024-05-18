@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import styles from './Taskslist.module.css';
 import { FaPencilAlt, FaRegTrashAlt, FaPlus, FaRegSquare, FaRegCheckSquare } from "react-icons/fa";
 import Modal from './Modal';
+import { ToastContainer, toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Tasklist() {
     const db = [
@@ -27,7 +29,19 @@ function Tasklist() {
         }
     }
 
-    
+    function fnNotify(text) {
+        toast.warn(text, {
+            position: "top-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Slide,
+            });
+    }
 
     const [modalIsOpen, setIsOpen] = useState(false);
     function fnOpenModal() {
@@ -134,6 +148,8 @@ function Tasklist() {
     return (
         
         <div className={styles.tarefas}>
+            <ToastContainer />
+
             <table>
                 <thead>
                     <th>Tarefa</th>
@@ -187,7 +203,8 @@ function Tasklist() {
                 changeCompleted={setCompletedTask}
                 refreshTaskList={fnTaskList}
                 isOpen={modalIsOpen} 
-                onClose={setIsOpen} />
+                onClose={setIsOpen}
+                notify={fnNotify} />
 
         </div>
     )
