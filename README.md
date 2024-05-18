@@ -16,6 +16,8 @@ As opções básicas são: Criar uma nova tarefa ou Editar/Excluir as existentes
 0. Versão 1.2
    1. Criada as functions para renderizar a lista de tarefas quando ocorre alterações no array;
    2. Melhoria no feedback visual ao selecionar o ícone de exclusão;
+0. Versão 1.3
+   1. Substituição de `window.alert` pela `React-Toastify`;
 
 
 ---
